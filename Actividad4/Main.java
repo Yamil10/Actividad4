@@ -42,6 +42,7 @@ public class Main {
                         System.out.println("El ID ya existe o es menor a 0");
                     } else {
                         System.err.println("ID agregagado");
+                    continue;
                     sc.nextLine(); // limpiar buffer
                     System.out.print("Ingresa el nombre del empleado: ");
                     nombre = sc.nextLine();
@@ -56,7 +57,7 @@ public class Main {
                         System.out.println("Recorrido Inorden");
                         arbolito.inorden(arbolito.raiz);
                     } else {
-                        System.out.println("El árbol está vacío.");
+                        System.out.println("El árbol está vacío");
                     }
                     break;
 
