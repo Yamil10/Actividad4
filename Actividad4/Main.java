@@ -42,8 +42,7 @@ public class Main {
                         System.out.println("El ID ya existe o es menor a 0");
                     } else {
                         System.err.println("ID agregagado");
-                    continue;
-                    sc.nextLine(); // limpiar buffer
+                    sc.nextLine();
                     System.out.print("Ingresa el nombre del empleado: ");
                     nombre = sc.nextLine();
                     System.out.print("Ingresa el trabajo del empleado: ");
