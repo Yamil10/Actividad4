@@ -1,16 +1,21 @@
 package Actividad4;
 
 public class Nodo {
-	int dato;
-	String nombre;
-	Nodo hijoizquierdo, hijoderecho;
-	public Nodo(int d, String nom){
-		this.dato=d;
-		this.nombre=nom;
-		this.hijoizquierdo=null;
-		this.hijoderecho=null;
-	}
-	public String toString() {
-		return nombre+ "Su dato es" + dato;
-	}
+    int dato;
+    String nombre;
+    String trabajo;
+    Nodo hijoizquierdo, hijoderecho;
+
+    public Nodo(int d, String nom, String job) {
+        this.dato = d;
+        this.nombre = nom;
+        this.trabajo = job;
+        this.hijoizquierdo = null;
+        this.hijoderecho = null;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + dato + " | Nombre: " + nombre + " | Trabajo: " + trabajo;
+    }
 }

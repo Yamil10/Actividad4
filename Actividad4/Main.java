@@ -1,41 +1,84 @@
 package Actividad4;
 
-import javax.swing.JOptionPane;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
-	public static void main (String[] args) {
-		int opcion=0, elemento;
-		String nombre;
-		ArbolBinario arbolito =new ArbolBinario();
-		do {
-			try {
-				opcion=Integer.parseInt(JOptionPane.showInputDialog(null, 
-						"1. Agregar un Nodo\n"
-						+ "2. Recorrer el árbol in order \n"
-						+ "3. Salir \n"
-								+ "Elige una opción. . .", "Árboles binarios", JOptionPane.QUESTION_MESSAGE));
-				switch(opcion) {
-				case 1:
-					elemento=Integer.parseInt(JOptionPane.showInputDialog(null,
-							"Ingresa el número del nodo. . .", "Agregando Nodo", JOptionPane.QUESTION_MESSAGE ));
-					nombre=JOptionPane.showInputDialog(null, "Ingresa el nombre del nodo", "Agregando Nodo", JOptionPane.QUESTION_MESSAGE);
-					arbolito.agregarNodo(elemento, nombre);
-					break;
-				case 2:
-					if(!arbolito.estaVacio()) {
-						arbolito.inorden(arbolito.raiz);
-					} else {
-						JOptionPane.showMessageDialog(null, "El árbol está vacío", "Cuidado", JOptionPane.INFORMATION_MESSAGE);
-					}
-				case 3:
-					JOptionPane.showMessageDialog(null, "Aplicación finalizada", "F I N", JOptionPane.INFORMATION_MESSAGE);
-					break;
-					default:
-					JOptionPane.showMessageDialog(null, "Opción incorrecta", "Cuidado!!", JOptionPane.INFORMATION_MESSAGE);
-				}
-			}catch(NumberFormatException n){
-				JOptionPane.showMessageDialog(null, "error" + n.getMessage() );
-			}
-			} while(opcion!=3);
-		}
-	}
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int opcion, elemento;
+        String nombre, trabajo;
+        ArbolBinario arbolito = new ArbolBinario();
+        Random rand = new Random();
+
+        // Listas de nombres y trabajos para asignar aleatoriamente
+        String[] nombres = {"Juan", "María", "Pedro", "Lucía", "Carlos", "Ana", "José", "Elena",
+                "Luis", "Paula", "Diego", "Valeria", "Andrés", "Camila", "Mateo", "Isabella",
+                "Daniel", "Sofía", "Jorge", "Fernanda"};
+        String[] trabajos = {"Programador", "Diseñador", "Contador", "Administrador",
+                "Ingeniero", "Doctor", "Abogado", "Profesor", "Arquitecto", "Vendedor"};
+
+        // Precargar 100 empleados con nombres y trabajos aleatorios
+        for (int i = 1; i <= 100; i++) {
+            String nomAleatorio = nombres[rand.nextInt(nombres.length)] + "_" + i;
+            String trabajoAleatorio = trabajos[rand.nextInt(trabajos.length)];
+            arbolito.agregarNodo(i, nomAleatorio, trabajoAleatorio);
+        }
+
+        do {
+            System.out.println("Menu");
+            System.out.println("1. Agregar un Nodo");
+            System.out.println("2. Recorrer el árbol Inorden");
+            System.out.println("3. Buscar un Empleado por ID");
+            System.out.println("4. Salir");
+            System.out.print("Elige una opción: ");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingresa el número del nodo (ID): ");
+                    elemento = sc.nextInt();
+                    sc.nextLine(); // limpiar buffer
+                    System.out.print("Ingresa el nombre del empleado: ");
+                    nombre = sc.nextLine();
+                    System.out.print("Ingresa el trabajo del empleado: ");
+                    trabajo = sc.nextLine();
+                    arbolito.agregarNodo(elemento, nombre, trabajo);
+                    System.out.println("Empleado agregado correctamente.");
+                    break;
+
+                case 2:
+                    if (!arbolito.estaVacio()) {
+                        System.out.println("Recorrido Inorden");
+                        arbolito.inorden(arbolito.raiz);
+                    } else {
+                        System.out.println("El árbol está vacío.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Ingresa el ID del empleado a buscar: ");
+                    elemento = sc.nextInt();
+                    Nodo encontrado = arbolito.buscarNodo(elemento);
+                    if (encontrado != null) {
+                        System.out.println("Empleado encontrado:");
+                        System.out.println("ID: " + encontrado.dato);
+                        System.out.println("Nombre: " + encontrado.nombre);
+                        System.out.println("Trabajo: " + encontrado.trabajo);
+                    } else {
+                        System.out.println("Empleado no encontrado");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Has salido del programa");
+                    break;
+
+                default:
+                    System.out.println("Opción incorrecta, intenta de nuevo");
+            }
+        } while (opcion != 4);
+
+        sc.close();
+    }
+}
