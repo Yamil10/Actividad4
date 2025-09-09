@@ -1,4 +1,20 @@
-Insertado valor: 40
-Búsqueda de 40: ENCONTRADO
-Insertado valor: 90
-Búsqueda de 90: ENCONTRADO
+Insertado valor: 1
+Insertado valor: 2
+Insertado valor: 3
+Insertado valor: 4
+Insertado valor: 5
+Insertado valor: 6
+Insertado valor: 7
+Insertado valor: 8
+Insertado valor: 9
+Insertado valor: 10
+Insertado valor: 11
+Insertado valor: 12
+Insertado valor: 13
+Insertado valor: 14
+Insertado valor: 15
+Insertado valor: 16
+Insertado valor: 17
+Insertado valor: 18
+Insertado valor: 19
+Insertado valor: 20
