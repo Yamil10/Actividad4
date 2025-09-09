@@ -1,4 +1,5 @@
 package Actividad4;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,47 +13,61 @@ public class ArbolBinarioBusqueda {
         logWriter = new PrintWriter(new FileWriter(logFile, true));
     }
 
-    // Método para insertar un valor
-    public void insertar(int valor) {
-        raiz = insertarRec(raiz, valor);
-        log("Insertado valor: " + valor);
+    // Insertar un nombre
+    public void insertar(String nombre) {
+        raiz = insertarRec(raiz, nombre);
+        log("Insertado: " + nombre);
     }
 
-    private Nodo insertarRec(Nodo raiz, int valor) {
+    private Nodo insertarRec(Nodo raiz, String nombre) {
         if (raiz == null) {
-            raiz = new Nodo(valor);
-            return raiz;
+            return new Nodo(nombre);
         }
-        if (valor < raiz.valor)
-            raiz.izquierda = insertarRec(raiz.izquierda, valor);
-        else if (valor > raiz.valor)
-            raiz.derecha = insertarRec(raiz.derecha, valor);
+        int clave = generarClave(nombre);
+
+        if (clave < raiz.clave)
+            raiz.izquierda = insertarRec(raiz.izquierda, nombre);
+        else if (clave > raiz.clave)
+            raiz.derecha = insertarRec(raiz.derecha, nombre);
+
         return raiz;
     }
 
-    // Método para buscar un valor
-    public boolean buscar(int valor) {
-        boolean encontrado = buscarRec(raiz, valor);
-        log("Búsqueda de " + valor + ": " + (encontrado ? "ENCONTRADO" : "NO ENCONTRADO"));
+    // Buscar un nombre
+    public boolean buscar(String nombre) {
+        boolean encontrado = buscarRec(raiz, nombre);
+        log("Búsqueda de " + nombre + ": " + (encontrado ? "ENCONTRADO" : "NO ENCONTRADO"));
         return encontrado;
     }
 
-    private boolean buscarRec(Nodo raiz, int valor) {
+    private boolean buscarRec(Nodo raiz, String nombre) {
         if (raiz == null) return false;
-        if (raiz.valor == valor) return true;
-        return valor < raiz.valor ? buscarRec(raiz.izquierda, valor) : buscarRec(raiz.derecha, valor);
+
+        int clave = generarClave(nombre);
+
+        if (raiz.clave == clave && raiz.nombre.equals(nombre)) return true;
+        return clave < raiz.clave ?
+                buscarRec(raiz.izquierda, nombre) :
+                buscarRec(raiz.derecha, nombre);
     }
 
-    // Método para registrar en el log
+    // Generar clave ASCII
+    private int generarClave(String nombre) {
+        int suma = 0;
+        for (char c : nombre.toCharArray()) {
+            suma += (int) c;
+        }
+        return suma;
+        // 🔸 si prefieres hash: return nombre.hashCode();
+    }
+
+    // Log
     private void log(String mensaje) {
         logWriter.println(mensaje);
         logWriter.flush();
     }
 
-    // Cerrar log
     public void cerrarLog() {
-        if (logWriter != null) {
-            logWriter.close();
-        }
+        if (logWriter != null) logWriter.close();
     }
 }

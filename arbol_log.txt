@@ -18,3 +18,8 @@ Insertado valor: 17
 Insertado valor: 18
 Insertado valor: 19
 Insertado valor: 20
+Insertado: Yamil
+Insertado: Roberto
+Insertado: Hugo
+Insertado: Alejandro
+Búsqueda de Yamil: ENCONTRADO

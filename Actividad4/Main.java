@@ -3,36 +3,38 @@ package Actividad4;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main{
+public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArbolBinarioBusqueda arbol = null;
         try {
             arbol = new ArbolBinarioBusqueda("arbol_log.txt");
-            int opcion, valor;
+            int opcion;
+            String nombre;
             do {
                 System.out.println("\nMenú Árbol Binario de Búsqueda");
-                System.out.println("1) Insertar valor");
-                System.out.println("2) Buscar valor");
+                System.out.println("1) Insertar nombre");
+                System.out.println("2) Buscar nombre");
                 System.out.println("3) Salir");
                 System.out.print("Elige una opción: ");
                 opcion = sc.nextInt();
+                sc.nextLine(); // limpiar buffer
 
                 switch (opcion) {
                     case 1:
-                        System.out.print("Ingresa el valor a insertar: ");
-                        valor = sc.nextInt();
-                        arbol.insertar(valor);
-                        System.out.println("Valor insertado.");
+                        System.out.print("Ingresa el nombre a insertar: ");
+                        nombre = sc.nextLine();
+                        arbol.insertar(nombre);
+                        System.out.println("Nombre insertado.");
                         break;
                     case 2:
-                        System.out.print("Ingresa el valor a buscar: ");
-                        valor = sc.nextInt();
-                        boolean encontrado = arbol.buscar(valor);
+                        System.out.print("Ingresa el nombre a buscar: ");
+                        nombre = sc.nextLine();
+                        boolean encontrado = arbol.buscar(nombre);
                         if (encontrado) {
-                            System.out.println("Valor encontrado en el árbol.");
+                            System.out.println(nombre + " está en el árbol.");
                         } else {
-                            System.out.println("Valor NO encontrado en el árbol.");
+                            System.out.println(nombre + " NO está en el árbol.");
                         }
                         break;
                     case 3:
@@ -45,9 +47,7 @@ public class Main{
         } catch (IOException e) {
             System.out.println("Error al crear el archivo de log: " + e.getMessage());
         } finally {
-            if (arbol != null) {
-                arbol.cerrarLog();
-            }
+            if (arbol != null) arbol.cerrarLog();
             sc.close();
         }
     }
