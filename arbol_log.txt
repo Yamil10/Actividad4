@@ -23,3 +23,5 @@ Insertado: Roberto
 Insertado: Hugo
 Insertado: Alejandro
 Búsqueda de Yamil: ENCONTRADO
+Insertado: PAMELA
+Búsqueda de PAMELA: ENCONTRADO
