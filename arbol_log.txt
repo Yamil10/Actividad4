@@ -1,0 +1,4 @@
+Insertado valor: 40
+Búsqueda de 40: ENCONTRADO
+Insertado valor: 90
+Búsqueda de 90: ENCONTRADO
