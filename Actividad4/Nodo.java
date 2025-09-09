@@ -14,7 +14,7 @@ class Nodo {
     private int generarClave(String nombre) {
         int suma = 0;
         for (char c : nombre.toCharArray()) {
-            suma += (int) c;  // suma valores ASCII
+            suma += (int) c; 
         }
         return suma;
     }
