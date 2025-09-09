@@ -16,7 +16,7 @@ public class ArbolBinarioBusqueda {
     // Insertar un nombre
     public void insertar(String nombre) {
         raiz = insertarRec(raiz, nombre);
-        log("Insertado: " + nombre);
+        log("Insertado: " + nombre+" el 9/09/2025");
     }
 
     private Nodo insertarRec(Nodo raiz, String nombre) {

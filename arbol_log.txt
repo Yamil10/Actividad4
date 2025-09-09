@@ -18,10 +18,7 @@ Insertado valor: 17
 Insertado valor: 18
 Insertado valor: 19
 Insertado valor: 20
-Insertado: Yamil
-Insertado: Roberto
-Insertado: Hugo
-Insertado: Alejandro
+Insertado: Yamil el 9/09/2025
+Insertado: Roberto el 9/09/2025
+Insertado: Carlos el 9/09/2025
 Búsqueda de Yamil: ENCONTRADO
-Insertado: PAMELA
-Búsqueda de PAMELA: ENCONTRADO

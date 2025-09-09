@@ -25,7 +25,7 @@ public class Main {
                         System.out.print("Ingresa el nombre a insertar: ");
                         nombre = sc.nextLine();
                         arbol.insertar(nombre);
-                        System.out.println("Nombre insertado.");
+                        System.out.println("Nombre insertado");
                         break;
                     case 2:
                         System.out.print("Ingresa el nombre a buscar: ");
