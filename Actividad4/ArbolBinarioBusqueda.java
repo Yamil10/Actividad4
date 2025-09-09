@@ -58,7 +58,6 @@ public class ArbolBinarioBusqueda {
             suma += (int) c;
         }
         return suma;
-        // 🔸 si prefieres hash: return nombre.hashCode();
     }
 
     // Log
