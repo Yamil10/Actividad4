@@ -1,0 +1,32 @@
+[INSERT] ID=50 Nombre=Luis
+[INSERT] Creando nodo -> ID=50
+[INSERT] ID=30 Nombre=Ana
+[INSERT] Creando nodo -> ID=30
+[INSERT] ID=70 Nombre=Carlos
+[INSERT] Creando nodo -> ID=70
+[INSERT] ID=20 Nombre=Beatriz
+[INSERT] Creando nodo -> ID=20
+[INSERT] ID=40 Nombre=Diego
+[INSERT] Creando nodo -> ID=40
+[INSERT] ID=60 Nombre=Fernanda
+[INSERT] Creando nodo -> ID=60
+[INSERT] ID=80 Nombre=Gustavo
+[INSERT] Creando nodo -> ID=80
+[INSERT] ID=35 Nombre=Helena
+[INSERT] Creando nodo -> ID=35
+[INSERT] ID=45 Nombre=Irene
+[INSERT] Creando nodo -> ID=45
+[INSERT] ID=65 Nombre=Jorge
+[INSERT] Creando nodo -> ID=65
+[INSERT] ID=75 Nombre=Karen
+[INSERT] Creando nodo -> ID=75
+[SEARCH] Buscando ID=65
+[SEARCH] Resultado: ID:65 Nombre:Jorge
+[SEARCH] Buscando ID=99
+[SEARCH] Resultado: NO ENCONTRADO
+[DELETE] Intentando eliminar ID=30
+[DELETE] Nodo encontrado: ID:30 Nombre:Ana
+[DELETE] Nodo encontrado: ID:35 Nombre:Helena
+[SEARCH] Buscando ID=75
+[SEARCH] Resultado: ID:75 Nombre:Karen
+[SEARCH] ID=40 -> NO ENCONTRADO
