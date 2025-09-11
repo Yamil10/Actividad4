@@ -1,21 +1,28 @@
 package Actividad4;
 
-import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ArbolBinario arbol;
-        try {
-            arbol = new ArbolBinario("log_empleados.txt");
-        } catch (IOException e) {
-            System.out.println("No se pudo abrir archivo de log, se usará solo consola.");
-            arbol = new ArbolBinario();
+        Scanner sc = new Scanner(System.in);
+        ArbolBinario arbol = new ArbolBinario();
+
+        // Datos base
+        String[] nombres = {"Ana", "Luis", "Marta", "Pedro", "Sofía", "Carlos", "Lucía", "Miguel", "Laura", "Jorge",
+                            "Elena", "Andrés", "Paula", "Fernando", "Carmen", "Raúl", "Isabel", "Diego", "Silvia", "Alberto"};
+        String[] puestos = {"Gerente", "Analista", "Programador", "Diseñador", "Soporte", "Ventas", "Recursos Humanos", "Contador"};
+
+        Random rand = new Random();
+
+        // Insertar 100 empleados automáticos
+        for (int i = 1; i <= 100; i++) {
+            String nombre = nombres[rand.nextInt(nombres.length)];
+            String puesto = puestos[rand.nextInt(puestos.length)];
+            arbol.insertar(new Empleado(i, nombre, puesto));
         }
 
-        Scanner sc = new Scanner(System.in);
         int opcion;
-
         do {
             System.out.println("\n===== MENÚ GESTIÓN DE EMPLEADOS =====");
             System.out.println("1) Insertar empleado");
@@ -27,45 +34,48 @@ public class Main {
             System.out.println("7) Salir");
             System.out.print("Elige una opción: ");
             opcion = sc.nextInt();
-            sc.nextLine(); // limpiar buffer
+            sc.nextLine();
 
             switch (opcion) {
                 case 1:
-                    System.out.print("Ingrese ID del empleado: ");
+                    System.out.print("Ingrese ID: ");
                     int id = sc.nextInt();
                     sc.nextLine();
-                    System.out.print("Ingrese nombre del empleado: ");
+                    System.out.print("Ingrese nombre: ");
                     String nombre = sc.nextLine();
-                    arbol.insertar(id, nombre);
+                    System.out.print("Ingrese puesto: ");
+                    String puesto = sc.nextLine();
+                    arbol.insertar(new Empleado(id, nombre, puesto));
+                    System.out.println("Empleado insertado.");
                     break;
                 case 2:
                     System.out.print("Ingrese ID a buscar: ");
                     int idBuscar = sc.nextInt();
-                    sc.nextLine();
-                    NodoEmpleado encontrado = arbol.buscar(idBuscar);
-                    if (encontrado != null)
+                    Empleado encontrado = arbol.buscar(idBuscar);
+                    if (encontrado != null) {
                         System.out.println("Empleado encontrado: " + encontrado);
-                    else
-                        System.out.println("Empleado NO encontrado.");
+                    } else {
+                        System.out.println("Empleado con ID " + idBuscar + " NO existe.");
+                    }
                     break;
                 case 3:
                     System.out.print("Ingrese ID a eliminar: ");
                     int idEliminar = sc.nextInt();
-                    sc.nextLine();
-                    arbol.eliminar(idEliminar);
-                    System.out.println("Eliminado si existía.");
+                    boolean eliminado = arbol.eliminar(idEliminar);
+                    if (eliminado) {
+                        System.out.println("Empleado con ID " + idEliminar + " eliminado.");
+                    } else {
+                        System.out.println("Empleado con ID " + idEliminar + " NO existe.");
+                    }
                     break;
                 case 4:
-                    System.out.println("Recorrido Inorden:");
-                    arbol.imprimirLista(arbol.recorridoInorden());
+                    arbol.inorden();
                     break;
                 case 5:
-                    System.out.println("Recorrido Preorden:");
-                    arbol.imprimirLista(arbol.recorridoPreorden());
+                    arbol.preorden();
                     break;
                 case 6:
-                    System.out.println("Recorrido Postorden:");
-                    arbol.imprimirLista(arbol.recorridoPostorden());
+                    arbol.postorden();
                     break;
                 case 7:
                     System.out.println("Saliendo...");
@@ -75,7 +85,6 @@ public class Main {
             }
         } while (opcion != 7);
 
-        arbol.cerrarLog();
         sc.close();
     }
 }

@@ -1,19 +1,12 @@
 package Actividad4;
 
 public class NodoEmpleado {
-    int id;
-    String nombre;
+    Empleado empleado;
     NodoEmpleado izquierda, derecha;
 
-    public NodoEmpleado(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
+    public NodoEmpleado(Empleado empleado) {
+        this.empleado = empleado;
         this.izquierda = null;
         this.derecha = null;
-    }
-
-    @Override
-    public String toString() {
-        return "ID:" + id + " Nombre:" + nombre;
     }
 }
