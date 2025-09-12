@@ -7,7 +7,6 @@ public class ArbolBinario {
         raiz = null;
     }
 
-    /* ---------------- Inserción ---------------- */
     public void insertar(Empleado empleado) {
         raiz = insertarRec(raiz, empleado);
     }
@@ -23,7 +22,6 @@ public class ArbolBinario {
         return nodo;
     }
 
-    /* ---------------- Búsqueda ---------------- */
     public Empleado buscar(int id) {
         return buscarRec(raiz, id);
     }
@@ -36,7 +34,6 @@ public class ArbolBinario {
                 : buscarRec(nodo.derecha, id);
     }
 
-    /* ---------------- Eliminación ---------------- */
     public boolean eliminar(int id) {
         if (buscar(id) == null) {
             return false; // No existe
@@ -70,7 +67,6 @@ public class ArbolBinario {
         return nodo;
     }
 
-    /* ---------------- Recorridos ---------------- */
     public void inorden() {
         System.out.print("Recorrido Inorden: ");
         inordenRec(raiz);
